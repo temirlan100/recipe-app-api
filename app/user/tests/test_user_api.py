@@ -16,7 +16,7 @@ class PublicUserApiTests(TestCase):
     """Test the users API (public)"""
 
     def setUp(self):
-        self.client = APIClient
+        self.client = APIClient()
 
     def test_create_valid_user_success(self):
         """Test creating with valid user payload successful"""
@@ -48,7 +48,8 @@ class PublicUserApiTests(TestCase):
         """Test password length more than 5 characters"""
         payload = {
             "email": "test@test.com",
-            "password": "som"
+            "password": "som",
+            "name": "test"
         }
 
         res = self.client.post(CREATE_USER_URL, payload)
